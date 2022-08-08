@@ -10,7 +10,11 @@ public class Mathematics {
 
 	public static double distance(double x1, double y1, double x2, double y2) {
 		// √((x2-x1)²+(y2-y1)²)
-		// TODO Auto-generated method stub
-		return 0.0;
+		// Sol1: problem with very big or very small exponent
+		//		return Math.sqrt(
+		//				Math.pow(x2 - x1, 2)
+		//				+ Math.pow(y2 - y1, 2));
+		// Sol2: deal with very big or very small exponent 
+		return Math.hypot(x2 - x1, y2 - y1);
 	}
 }

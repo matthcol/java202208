@@ -60,10 +60,31 @@ class TestTexte {
     
     @Test
     void testOrdre() {
+    	// TODO
     	String ville1 = "Paris";
     	String ville2 = "Pau";
     	// boolean test = ville1 < ville2; // ne compile pas
     	// voir Comparator, Comparable
+    }
+    
+    @Test
+    void testLongueurTexte() {
+    	String ville1 = "Paris";
+    	String ville2 = "Pau";
+    	int l1 = ville1.length();
+    	int l2 = ville2.length();
+    	System.out.println(l1 + " / " + l2);
+    	System.out.println(l1 < l2);
+    	System.out.println(ville1.length() < ville2.length());
+    }
+    
+    @Test
+    void extraitTexte() {
+    	String ville = "Toulouse";
+    	// caractères sont numérotés à partir de 0
+    	System.out.println(ville.substring(0,4));
+    	System.out.println(ville.substring(4));
+    	System.out.println(ville.substring(1,6));
     }
     
 }

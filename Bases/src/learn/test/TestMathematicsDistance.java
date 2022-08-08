@@ -38,6 +38,6 @@ class TestMathematicsDistance {
 		double x2 = 4.25*scale;
 		double y2 = 2.5*scale;
 		double d = Mathematics.distance(x1, y1, x2, y2);
-		assertEquals(5.0*scale, d);
+		assertEquals(5.0*scale, d, scale/1000000);
 	}
 }
