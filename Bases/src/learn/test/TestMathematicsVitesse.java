@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import learn.Mathematics;
 
+
 class TestMathematicsVitesse {
 
 	@Test
