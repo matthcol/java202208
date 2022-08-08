@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class TestNombre {
+class TestEntiers {
 
 	@Test
 	void testEntier() {
@@ -92,6 +92,13 @@ class TestNombre {
 	}
 	
 	@Test
+	void testDivisionByZero() {
+		// leve exception ArithmeticException: / by zero
+		int d = 3 / 0;
+		System.out.println(d);
+	}
+	
+	@Test
 	void testOperateurInplace() {
 		int x = 4;
 		x++;
@@ -104,7 +111,7 @@ class TestNombre {
 		x--; // --x
 		System.out.println("x = " + x);
 		//
-		x += 2;
+		x += 2; // x = x + 2
 		System.out.println("x = " + x);
 		x -= 3;
 		System.out.println("x = " + x);

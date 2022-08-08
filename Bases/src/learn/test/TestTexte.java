@@ -38,4 +38,32 @@ class TestTexte {
     	// afficher le message
     }
     
+    @Test
+    void testEgalite() {
+    	String ville1 = "Paris";
+    	String ville2 = "Pau";
+    	String ville3 = "Paris";
+    	String ville4 = "Pa"+"ris";
+    	// résultats cohérents :
+    	System.out.println(ville1 == ville2);
+    	System.out.println(ville1 == ville1);
+    	System.out.println(ville1 == ville3);
+    	System.out.println(ville1 == ville4);
+    	// résultats incohérents
+    	String ville5 = ville1.substring(0,3) 
+    			+ ville3.substring(3);
+    	System.out.println("V5 : " + ville5);
+    	System.out.println(ville1 == ville5); // false
+    	// utiliser equals pour contenu
+    	System.out.println(ville1.equals(ville5)); // true
+    }
+    
+    @Test
+    void testOrdre() {
+    	String ville1 = "Paris";
+    	String ville2 = "Pau";
+    	// boolean test = ville1 < ville2; // ne compile pas
+    	// voir Comparator, Comparable
+    }
+    
 }
