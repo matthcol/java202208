@@ -3,6 +3,7 @@ package learn.test.exos;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
+import java.util.TreeSet;
 
 import org.junit.jupiter.api.Test;
 
@@ -15,9 +16,21 @@ public class TestComparableExo {
 				"Pau", "Lyon", "Marseille",
 				"Pau", "Bayonne", "Pamiers",
 				"Nancy", "Brest", "Tours");
-		// extraire les villes commençant par P 
+		// Exo: extraire les villes commençant par P 
 		// - triées par ordre alphabétique
 		// - sans doublons
+		
+		// Sol: un TreeSet est un NavigableSet:
+		//	- tri auto des données
+		//  - pas de doublons
+		//  - ordre naturel du type des éléments par défaut
+		var villesP = new TreeSet<String>(); 
+		for (var v : villes) {
+			if (v.startsWith("P")) {
+				villesP.add(v); // cout en log(n): 2^20 => 20
+			}
+		}
+		System.out.println(villesP);
 	}
 	
 	@Test
