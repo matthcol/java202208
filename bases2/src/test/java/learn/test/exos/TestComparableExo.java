@@ -2,6 +2,7 @@ package learn.test.exos;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -36,14 +37,25 @@ public class TestComparableExo {
 	@Test
 	void testExo2() {
 		var villes = List.of("Bayonne","Amnéville",
-				"Bordeaux",  "Nantes", "Paris", 
+				"Bordeaux",  "Nantes", "pArIs", 
 				"Pau", "Lyon", "Marseille",
 				"pau", "Bayonne", "PAMIERS",
-				"Nancy", "Brest", "Tours", "pArIs");
+				"Nancy", "Brest", "Tours", "Paris",
+				"pabu");
 		// extraire les villes commençant par p
 		// - sans tenir compte de la casse
 		// - triées par ordre alphabétique (sans tenir compte de la casse)
 		// - sans doublons (sans tenir compte de la casse)
+		Comparator<String> cmp = 
+				(v1, v2) -> v1.compareToIgnoreCase(v2);
+				// String::compareToIgnoreCase; // + court ;)
+		var villesP = new TreeSet<String>(cmp); 
+		for (var v : villes) {
+			if (v.toLowerCase().startsWith("p")) {
+				villesP.add(v); 
+			}
+		}
+		System.out.println(villesP);
 	}
 
 }
