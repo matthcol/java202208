@@ -60,6 +60,13 @@ public class ExoCollection {
 		}
 		System.out.println("X max: " + xMax);
 		// 3. donner la coordonnée X min de tous les points
+		double xMin = Double.POSITIVE_INFINITY; // -inf
+		for (var pt: points) {
+			if (pt.getX() < xMin) {
+				xMin = pt.getX(); 
+			}
+		}
+		System.out.println("X min: " + xMin);
 		// 4. donner la coordonnée X moyenne de tous les points
 		// (Σx_i)/nb = Σ(x_i/nb)
 		double xSum = 0.0;
