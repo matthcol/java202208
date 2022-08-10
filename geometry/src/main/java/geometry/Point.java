@@ -50,13 +50,13 @@ public class Point {
 	
 	// distance
 	public double distance(Point other) {
-		// TODO: this.x, this.y et other.x, other.y
 		return Math.hypot(other.x -this.x,other.y-this.y);
 	}
 	
 	// translate
 	public void translate(double deltaX, double deltaY) {
-		// TODO
+		this.x += deltaX;
+		this.y += deltaY;
 	}
 	
 }
