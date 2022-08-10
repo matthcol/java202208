@@ -8,6 +8,7 @@ public class Point {
 	private double y;
 	
 	public Point() {
+		this.name = "";
 	}
 	
 	public Point(String name, double x, double y) {
