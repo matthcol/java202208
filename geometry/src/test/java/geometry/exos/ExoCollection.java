@@ -2,6 +2,9 @@ package geometry.exos;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -87,7 +90,30 @@ public class ExoCollection {
 	@Test
 	void exoTri() {
 		// 1. reprendre la liste de l'exercice exoTranslateAll
+		List<Point> points = List.of(
+				new Point("A",-1.1, 2.2),
+				new Point("D",0.0, 5.5),
+				new Point("b",0.0, 3.3),
+				new Point("C",1.1, 4.4),
+				new Point("E",3.3, 6.6),
+				new Point("F",4.4, 3.3)
+			);
+		var points2 = new ArrayList<>(points);
 		// 2. trier les points par X croissant
+		
+		// Point is not Comparable
+		// Collections.sort(points2); // compil error
+		// points2.sort(null); // execution error
+		
+		// avec un comparator
+		Comparator<Point> comp = Comparator.comparing(Point::getX);
+		points2.sort(comp);
+		System.out.println(points2);
 		// 2. trier les points par X décroissant, puis par name
+		comp = Comparator
+				.comparing(Point::getX, Comparator.reverseOrder())
+				.thenComparing(Point::getName, String::compareToIgnoreCase);
+		points2.sort(comp);
+		System.out.println(points2);
 	}
 }
