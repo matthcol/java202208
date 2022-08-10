@@ -48,8 +48,14 @@ class TestPoint {
 	void testTranslate() {
 		var ptA = new Point("A", 1.25, 3.5);
 		ptA.translate(2.25, -1.25);
-		assertEquals(3.5, ptA.getX());
-		assertEquals(2.25, ptA.getY());
+		assertAll(
+			() -> assertEquals(3.5, ptA.getX(), "x"),
+			() -> assertEquals(2.25, ptA.getY(), "y")
+		);
 	}
 
+	
+	
+	
+	
 }

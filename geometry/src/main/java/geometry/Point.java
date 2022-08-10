@@ -50,9 +50,13 @@ public class Point {
 	
 	// distance
 	public double distance(Point other) {
+		// TODO
 		return 0.0;
 	}
 	
 	// translate
+	public void translate(double deltaX, double deltaY) {
+		// TODO
+	}
 	
 }
