@@ -40,8 +40,11 @@ class TestPoint {
 	void testDistance() {
 		var ptA = new Point("A", 1.25, 3.5);
 		var ptB = new Point("B", 4.25, 7.5);
-		var d = ptA.distance(ptB);
-		assertEquals(5.0, d);
+		var d1 = ptA.distance(ptB);
+		var d2 = ptB.distance(ptA);
+		assertAll( 
+				() -> assertEquals(5.0, d1), 
+				() -> assertEquals(5.0, d2));
 	}
 	
 	@Test
