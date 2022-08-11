@@ -1,12 +1,17 @@
 package geometry;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 public class Circle {
 	
 	// association with class Point
 	// obligatoire
+	@NotNull
 	private Point center;
 	
 	// > 0, not nan
+	@Positive
 	private double radius;
 
 	/**
