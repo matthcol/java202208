@@ -72,14 +72,16 @@ class ExosFunctions {
 		var ptB = new Point("B", -3, 4);
 		
 		// find adequate function
-		BiFunction<Double, Double, Point> funPointOfCoords = null;
+		BiFunction<Double, Double, Point> funPointOfCoords = 
+				(x,y) -> new Point("?", x, y);
 		Point pt = funPointOfCoords.apply(3.0, 4.0);
 		assertEquals(3.0, pt.getX());
 		assertEquals(4.0, pt.getY());
 		System.out.println(pt);
 		
 		// find adequate function
-		Predicate<Point> isPositiveX = null;
+		Predicate<Point> isPositiveX = 
+				p -> p.getX() >= 0;
 		assertTrue(isPositiveX.test(ptA));
 		assertFalse(isPositiveX.test(ptB));
 	}

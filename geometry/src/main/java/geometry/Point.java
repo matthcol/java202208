@@ -16,7 +16,7 @@ public class Point implements Comparable<Point>{
 	private double y;
 	
 	public Point() {
-		this.name = "";
+		this("", 0.0, 0.0);
 	}
 	
 	public Point(String name, double x, double y) {
