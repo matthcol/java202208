@@ -49,6 +49,33 @@ public class Circle {
 				+  radius
 				+ "]";
 	}
+
+	/**
+	 * compute perimeter of this circle : 2.PI.R
+	 * @return surface
+	 */
+	public double perimeter() {
+		return 2*Math.PI*radius;
+	}
+
+	/**
+	 * compute surface of this circle: PI.R² 
+	 * @return surface
+	 */
+	public double surface() {
+		return Math.PI*radius*radius;
+		// return Math.PI*Math.pow(radius,2);
+	}
+
+	/**
+	 * test if point is inside this circle
+	 * formula: distance(center, point) < radius
+	 * @param point to inspect
+	 * @return true is point inside, else false 
+	 */
+	public boolean contains(Point point) {
+		return center.distance(point)  < radius;
+	}
 	
 	
 
