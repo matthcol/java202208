@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.NavigableSet;
 import java.util.OptionalDouble;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
@@ -24,12 +26,13 @@ public class ExoCollectionStream {
 	@BeforeEach
 	void initData() {
 		points = List.of(
-				new Point("A",-1.1, 2.2),
-				new Point("B",0.0, 3.3),
-				new Point("C",1.1, 4.4),
-				new Point("D",0.0, 5.5),
-				new Point("E",3.3, 6.6),
-				new Point("F",4.4, 3.3)
+				new Point("A", -1.1, 2.2),
+				new Point("B", 0.0, 3.3),
+				new Point("C", 1.1, 4.4),
+				new Point("D", 0.0, 5.5),
+				new Point("E", 3.3, 6.6),
+				new Point("F", 4.4, 3.3),
+				new Point("Z", 1.1, 4.4)
 			);
 	}
 	
@@ -124,13 +127,72 @@ public class ExoCollectionStream {
 	}
 	
 	@Test
-	void exoFilterPoints() {
+	void exoFilterPointsToList() {
 		var pointsFiltered = points.stream()
 			.filter(p -> p.getX() > 0)
 			.filter(p -> ! "F".equals(p.getName()))
 			.collect(Collectors.toList()); // Java 8/11
 			//.toList(); // Java 17
 		System.out.println(pointsFiltered);
+	}
+	
+	@Test
+	void exoFilterPointsExtractXToNavigableSet() {
+		// NavigableSet<Point> setPoints = new TreeSet<>();
+		// var setPoints = new TreeSet<Point>();
+		var setXfiltered = points.stream()
+			.filter(p -> p.getX() > 0)
+			.filter(p -> ! "F".equals(p.getName()))
+			.map(Point::getX)
+			.collect(Collectors.toCollection(
+					TreeSet<Double>::new
+			)); 
+		System.out.println(setXfiltered);
+	}
+	
+	@Test
+	void exoFilterPointsToNavigableSetNaturalOrder() {
+		// NavigableSet<Point> setPoints = new TreeSet<>();
+		// var setPoints = new TreeSet<Point>();
+		var pointsFiltered = points.stream()
+			.filter(p -> p.getX() > 0)
+			.filter(p -> ! "F".equals(p.getName()))
+			.collect(Collectors.toCollection(
+					TreeSet<Point>::new
+			)); 
+		System.out.println(pointsFiltered);
+	}
+	
+	@Test
+	void exoFilterPointsToNavigableSetCustomOrder() {
+		// NavigableSet<Point> setPoints = new TreeSet<>();
+		// var setPoints = new TreeSet<Point>();
+		var pointsFiltered = points.stream()
+			.filter(p -> p.getX() > 0)
+			.filter(p -> ! "F".equals(p.getName()))
+			.collect(Collectors.toCollection(
+					() -> new TreeSet<Point>(
+							Comparator.comparing(Point::getName))
+			)); 
+		System.out.println(pointsFiltered);
+	}
+	
+	@Test
+	void demoJoinNames() {
+		var name = points.stream()
+			.map(Point::getName)
+			.collect(Collectors.joining("-"));
+		System.out.println(name);			
+	}
+	
+	@Test
+	void demoPartitioning() {
+		double threshold = 1;
+		Map<Boolean, List<Point>> res = points.stream()
+			.collect(Collectors.partitioningBy(
+					pt -> pt.getX() > threshold
+			));
+		System.out.println(res);
 	}
 	
 	

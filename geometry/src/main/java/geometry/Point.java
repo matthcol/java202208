@@ -1,7 +1,15 @@
 package geometry;
 
-public class Point {
+import java.util.Comparator;
 
+public class Point implements Comparable<Point>{
+
+	public static Comparator<Point> DEFAULT_COMPARATOR = 
+			Comparator.comparing(Point::getX)
+				.thenComparing(Point::getY)
+				.thenComparing(Point::getName, 
+						String::compareToIgnoreCase);
+	
 	// attributes/fields
 	private String name;
 	private double x;
@@ -58,6 +66,16 @@ public class Point {
 	public void translate(double deltaX, double deltaY) {
 		this.x += deltaX;
 		this.y += deltaY;
+	}
+
+	/**
+	 * @return value < 0 (means this < other), 
+	 * =0 (means this = other,
+	 * >0 (means this > other)
+	 */
+	@Override
+	public int compareTo(Point other) {
+		return DEFAULT_COMPARATOR.compare(this, other);
 	}
 	
 }
