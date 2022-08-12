@@ -60,7 +60,7 @@ public class Circle extends Form implements Mesurable2D {
 
 	@Override
 	public void translate(double deltaX, double deltaY) {
-		// TODO
+		center.translate(deltaX, deltaY);
 	}
 
 	/**

@@ -91,6 +91,7 @@ class TestWeightedPoint {
 				case WeightedPoint wp:
 					double weight = wp.getWeight();
 					System.out.println("WP: " + wp + " -> weight: " + weight);
+					break;
 				default:
 					System.out.println("Point " + pt + " is not a WP" );
 			}
