@@ -2,38 +2,30 @@ package geometry;
 
 import java.util.Comparator;
 
-public class Point implements Comparable<Point>{
+public class Point extends Form implements Comparable<Point>{
 
 	public static Comparator<Point> DEFAULT_COMPARATOR = 
 			Comparator.comparing(Point::getX)
 				.thenComparing(Point::getY)
-				.thenComparing(Point::getName, 
+				.thenComparing(Form::getName,
 						String::compareToIgnoreCase);
 	
 	// attributes/fields
-	private String name;
+
 	private double x;
 	private double y;
 	
 	public Point() {
-		this("", 0.0, 0.0);
+		super(); // called by defaultz
+		// this("", 0.0, 0.0);
 	}
 	
 	public Point(String name, double x, double y) {
-		super();
-		this.name = name;
+		super(name);
 		this.x = x;
 		this.y = y;
 	}
 	
-	public String getName() {
-		return name;
-		// i.e.:
-		// return this.name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public double getX() {
 		return x;
@@ -54,7 +46,7 @@ public class Point implements Comparable<Point>{
 	@Override
 	public String toString() {
 		// TODO: utiliser un StringBuilder si trop de concaténation
-		return name + "(" + x + "," + y + ")";
+		return getName() + "(" + x + "," + y + ")";
 	}
 	
 	// distance
@@ -63,6 +55,7 @@ public class Point implements Comparable<Point>{
 	}
 	
 	// translate
+	@Override
 	public void translate(double deltaX, double deltaY) {
 		this.x += deltaX;
 		this.y += deltaY;

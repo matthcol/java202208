@@ -3,7 +3,7 @@ package geometry;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
-public class Circle {
+public class Circle extends Form implements Mesurable2D {
 	
 	// association with class Point
 	// obligatoire
@@ -22,8 +22,9 @@ public class Circle {
 		super();
 	}
 
-	public Circle(Point center, double radius) {
-		super();
+
+	public Circle(String name, Point center, double radius) {
+		super(name);
 		this.center = center;
 		this.radius = radius;
 	}
@@ -48,17 +49,25 @@ public class Circle {
 
 	@Override
 	public String toString() {
-		return "Circle[c:"
+		return "Circle[n:"
+				+getName()
+				+ "; c:"
 				+ center.getName() 
 				+ "; r:" 
 				+  radius
 				+ "]";
 	}
 
+	@Override
+	public void translate(double deltaX, double deltaY) {
+		// TODO
+	}
+
 	/**
 	 * compute perimeter of this circle : 2.PI.R
 	 * @return surface
 	 */
+	@Override
 	public double perimeter() {
 		return 2*Math.PI*radius;
 	}
@@ -67,6 +76,7 @@ public class Circle {
 	 * compute surface of this circle: PI.R² 
 	 * @return surface
 	 */
+	@Override
 	public double surface() {
 		return Math.PI*radius*radius;
 		// return Math.PI*Math.pow(radius,2);
